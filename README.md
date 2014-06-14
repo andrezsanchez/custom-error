@@ -7,7 +7,9 @@ Create custom errors that inherit Error
 
 # usage
 
-`customError(errorTitle[, ParentError])`
+Calling `customError(errorTitle[, ParentError])` creates a new error class that can be called the
+same way that `Error` is called. The new error constructor will inherit from `Error`, or from
+`ParentError` if you provide it.
 
 # examples
 
