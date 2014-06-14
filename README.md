@@ -2,8 +2,9 @@
 
 Create custom errors that inherit Error
 
-[![build status](https://secure.travis-ci.org/AndreZSanchez/custom-error.png)](http://travis-ci.org/AndreZSanchez/custom-error)
 [![browser support](https://ci.testling.com/AndreZSanchez/custom-error.png)](http://ci.testling.com/AndreZSanchez/custom-error)
+
+[![build status](https://secure.travis-ci.org/AndreZSanchez/custom-error.png)](http://travis-ci.org/AndreZSanchez/custom-error)
 
 # usage
 
