@@ -9,7 +9,7 @@ function ErrorMaker(name, ParentError) {
     this.stack = err.stack
 
     // A bit of a hack to get the error message to show correctly
-    if (this.stack.substr(0, this.name.length) !== this.name) {
+    if (this.stack && this.stack.substr(0, this.name.length) !== this.name) {
       var errorMessage = name
       if (message) {
         errorMessage += ': ' + message 
