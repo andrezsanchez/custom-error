@@ -7,10 +7,5 @@ test('message', function(t) {
   t.equals(MyError().name, 'MyError', 'name should be correct')
   t.equals(MyError('rawr').message, 'rawr', 'message should be correct')
 
-  try {
-    throw new MyError('meh')
-  }
-  catch (err) {
-    t.equals(err.toString(), 'MyError: meh', 'stack should contain name and message')
-  }
+  t.equals(new MyError('meh').stack.substr(0, 12), 'MyError: meh', 'stack should contain name and message')
 })
