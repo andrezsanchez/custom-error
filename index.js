@@ -8,6 +8,15 @@ function ErrorMaker(name, ParentError) {
     err.name = name
     this.stack = err.stack
 
+    // A bit of a hack to get the error message to show correctly
+    if (this.stack.substr(0, this.name.length) !== this.name) {
+      var errorMessage = name
+      if (message) {
+        errorMessage += ': ' + message 
+      }
+      this.stack = errorMessage + this.stack.slice(this.stack.indexOf('\n'))
+    }
+
     this.message = message || ''
     this.name = name
   }
