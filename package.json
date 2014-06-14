@@ -7,11 +7,11 @@
   "directories": {
     "test": "test"
   },
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "tape": "~2.13.3",
     "tap-spec": "~0.2.0"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "tape test/*.js | ./node_modules/.bin/tap-spec"
   },
