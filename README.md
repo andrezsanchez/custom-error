@@ -9,7 +9,7 @@ Create custom errors that inherit Error
 
 `customError(errorTitle[, ParentError])`
 
-# example
+# examples
 
 ``` js
 var customError = require('custom-error');
@@ -29,6 +29,20 @@ if (new Date().getFullYear() === 2038) {
   throw UnixApocalypseError('OH NOES')
 }
 ```
+
+## Using prototype
+
+``` js
+UnixApocalypseError.prototype.year = 2038
+
+try {
+  throw UnixApocalypseError()
+}
+catch (err) {
+  console.log(err.year) // 2038
+}
+```
+
 
 # installation
 
