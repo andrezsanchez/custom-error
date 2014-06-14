@@ -25,8 +25,7 @@ function ErrorMaker(name, ParentError) {
     this.name = name
   }
 
-  ParentError = ParentError || Error
-  NewError.prototype = new ParentError()
+  NewError.prototype = new (ParentError || Error)()
   NewError.prototype.constructor = NewError
   NewError.prototype.name = name
 
