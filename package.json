@@ -1,0 +1,29 @@
+{
+  "name": "custom-error",
+  "version": "0.0.0",
+  "author": "Andre Z. Sanchez",
+  "description": "Create custom errors that inherit Error",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "tape": "~2.13.3",
+    "tap-spec": "~0.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "tape test/*.js | ./node_modules/.bin/tap-spec"
+  },
+  "keywords": [
+    "error",
+    "inherit",
+    "prototype"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/AndreZSanchez/custom-error.git"
+  },
+  "homepage": "https://github.com/AndreZSanchez/custom-error",
+  "license": "MIT"
+}
