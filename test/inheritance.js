@@ -2,7 +2,7 @@ var test = require('tape')
 var error = require('../')
 
 test('inheritance', function(t) {
-  t.plan(11)
+  t.plan(12)
 
   var MyError = error('MyError')
   MyError.prototype.code = 77
