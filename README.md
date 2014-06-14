@@ -19,7 +19,7 @@ var ApocalypseError = customError('ApocalypseError');
 ApocalypseError() instanceof Error           // true
 ApocalypseError() instanceof ApocalypseError // true
 
-var UnixApocalypseError = customError('MeteorApocalypseError', ApocalypseError)
+var UnixApocalypseError = customError('UnixApocalypseError', ApocalypseError)
 
 UnixApocalypseError() instanceof Error                 // true
 UnixApocalypseError() instanceof ApocalypseError       // true
