@@ -11,6 +11,6 @@ test('message', function(t) {
     throw new MyError('meh')
   }
   catch (err) {
-    t.equals(err.stack.split('\n')[0], 'MyError: meh', 'stack should contain name and message')
+    t.equals(err.toString(), 'MyError: meh', 'stack should contain name and message')
   }
 })
