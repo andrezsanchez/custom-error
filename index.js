@@ -27,6 +27,11 @@ function ErrorMaker(name, ParentError) {
 
   NewError.prototype = new (ParentError || Error)()
   NewError.prototype.constructor = NewError
+  NewError.prototype.inspect = function() {
+    return this.message
+      ? '[' + name + ': ' + this.message + ']'
+      : '[' + name + ']'
+  }
   NewError.prototype.name = name
 
   return NewError
