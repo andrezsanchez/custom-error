@@ -12,6 +12,9 @@
     "tape": "~2.13.3",
     "tap-spec": "~0.2.0"
   },
+  "engines": {
+    "node": ">=0.10.0"
+  },
   "scripts": {
     "test": "tape test/*.js | tap-spec"
   },
