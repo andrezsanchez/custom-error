@@ -4,9 +4,6 @@
   "author": "Andre Z. Sanchez",
   "description": "Create custom errors that inherit Error",
   "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
   "dependencies": {},
   "devDependencies": {
     "tape": "~2.13.3",
