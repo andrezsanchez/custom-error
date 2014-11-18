@@ -1,6 +1,6 @@
 {
   "name": "custom-error",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "author": "Andre Z. Sanchez",
   "description": "Create custom errors that inherit Error",
   "main": "index.js",
