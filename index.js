@@ -1,5 +1,5 @@
 function ErrorMaker(name, ParentError) {
-  var NewError = function NewError(message) {
+  function NewError(message) {
     if (!(this instanceof NewError))
       return new NewError(message)
 
