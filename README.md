@@ -1,6 +1,10 @@
 # custom-error
 
-Create custom errors that inherit Error
+Create custom errors that inherit Error.
+
+# why
+
+Extending Error is a real [pain](http://stackoverflow.com/questions/1382107/whats-a-good-way-to-extend-error-in-javascript), so this library deals with the quirks, providing a clean API to extend Error that works across JS environments, including Node and browsers.
 
 [![build status](https://secure.travis-ci.org/andrezsanchez/custom-error.png)](http://travis-ci.org/andrezsanchez/custom-error)
 
