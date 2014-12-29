@@ -1,3 +1,5 @@
+'use strict';
+
 var v8StyleErrors = require('./lib/v8-style')()
 var reformat = require('./lib/reformat')
 
