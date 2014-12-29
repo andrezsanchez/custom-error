@@ -1,3 +1,6 @@
+var v8StyleErrors = require('./lib/v8-style')()
+var reformat = require('./lib/reformat')
+
 function ErrorMaker(name, ParentError) {
   function NewError(message) {
     if (!(this instanceof NewError))
@@ -15,13 +18,9 @@ function ErrorMaker(name, ParentError) {
       this.stack = err.stack
     }
 
-    // A bit of a hack to get the error message to show correctly
-    if (this.stack && this.stack.substr(0, this.name.length) !== this.name) {
-      var errorMessage = name
-      if (message) {
-        errorMessage += ': ' + message 
-      }
-      this.stack = errorMessage + this.stack.slice(this.stack.indexOf('\n'))
+    // if we have v8-styled stack messages, then reformat
+    if (v8StyleErrors) {
+      if (this.stack) this.stack = reformat(this.stack, name, message)
     }
 
     this.message = message || ''
