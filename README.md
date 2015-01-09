@@ -4,17 +4,31 @@ Create custom errors that inherit Error.
 
 [![build status](https://secure.travis-ci.org/andrezsanchez/custom-error.png)](http://travis-ci.org/andrezsanchez/custom-error)
 
-# why
+## why
 
-Extending Error is a real [pain](http://stackoverflow.com/questions/1382107/whats-a-good-way-to-extend-error-in-javascript), so this library deals with the quirks, providing a clean API to extend Error that works across JS environments, including Node and browsers.
+Extending Error is a real [pain](http://stackoverflow.com/questions/1382107/whats-a-good-way-to-extend-error-in-javascript). This library deals with the quirks, providing a clean API to extend Error that works across JS environments, including Node and browsers.
 
-# usage
+## api
 
-Calling `customError(errorTitle[, ParentError])` creates a new error class that can be called the
-same way that `Error` is called. The new error constructor will inherit from `Error`, or from
-`ParentError` if you provide it.
+### customError(name, [ParentError])
 
-# examples
+Returns a new subclass of Error, or of ParentError if it is provided.
+
+#### name
+
+*Required*  
+Type: `string`
+
+The display name of this class's errors. For example, the builtin TypeError class's name is `"TypeError"`. This affects how the error is displayed when it is thrown.
+
+#### ParentError
+
+Type: `Error`, `Error` descendant  
+Default: `Error`
+
+The Error type to be subclassed.
+
+## examples
 
 ``` js
 var customError = require('custom-error');
@@ -35,7 +49,7 @@ if (new Date().getFullYear() === 2038) {
 }
 ```
 
-## Using prototype
+### using prototype
 
 ``` js
 UnixApocalypseError.prototype.year = 2038
@@ -49,12 +63,12 @@ catch (err) {
 ```
 
 
-# installation
+## installation
 
 ``` bash
 npm install custom-error
 ```
 
-# license
+## license
 
 MIT
