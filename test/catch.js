@@ -4,16 +4,15 @@ var test = require('tape')
 var error = require('../')
 
 test('catch', function(t) {
-  t.plan(1)
+  t.plan(2)
 
   var MyError = error('MyError')
 
-  var f
-  f = function() {
-    try {
-      throw MyError()
-    }
-    catch (err) {}
+  try {
+    throw MyError('faffy')
   }
-  t.doesNotThrow(f, MyError, 'Should catch MyError')
+  catch (err) {
+    t.equals(err.name, 'MyError', 'should set error name correctly')
+    t.equals(err.message, 'faffy', 'should set error message correctly')
+  }
 })
