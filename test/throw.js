@@ -19,4 +19,3 @@ test('throw', function(t) {
   }
   t.throws(f, MyError, 'Should throw MyError')
 })
-

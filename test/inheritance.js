@@ -22,4 +22,3 @@ test('inheritance', function(t) {
 
   t.equals(OtherError().code, 77, 'OtherError instances should inherit MyError.prototype properties')
 })
-

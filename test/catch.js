@@ -17,5 +17,3 @@ test('catch', function(t) {
   }
   t.doesNotThrow(f, MyError, 'Should catch MyError')
 })
-
-
