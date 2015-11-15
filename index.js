@@ -16,7 +16,7 @@ function ErrorMaker(name, ParentError) {
       throw new Error(message)
     }
     catch (err) {
-      err.name = name
+      this.name = name
       this.stack = err.stack
     }
 
@@ -26,7 +26,6 @@ function ErrorMaker(name, ParentError) {
     }
 
     this.message = message || ''
-    this.name = name
   }
 
   NewError.prototype = new (ParentError || Error)()
