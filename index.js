@@ -22,7 +22,13 @@ function ErrorMaker(name, ParentError) {
 
     // if we have v8-styled stack messages, then reformat
     if (v8StyleErrors) {
-      if (this.stack) this.stack = reformat(this.stack, name, message)
+      if (this.stack) {
+          this.stack = reformat(this.stack, name, message)
+          if (!name) {
+              var lineStack = this.stack.split('\n')[2].replace(/\\/g, '/')
+              name = lineStack.slice(lineStack.lastIndexOf('/') + 1, lineStack.lastIndexOf('.'))
+          }
+      }
     }
 
     this.message = message || ''
