@@ -9,6 +9,13 @@ function defaultInspect() {
     : '[' + this.name + ']'
 }
 
+function reformatStack() {
+  // if we have v8-styled stack messages and this.stack is defined, then reformat
+  if (v8StyleErrors && this.stack) {
+    this.stack = reformat(this.stack, this.name, this.message)
+  }
+}
+
 function ErrorMaker(name, ParentError) {
   function NewError(message) {
     if (!(this instanceof NewError))
@@ -26,19 +33,17 @@ function ErrorMaker(name, ParentError) {
       this.stack = err.stack
     }
 
-    // if we have v8-styled stack messages and this.stack is defined, then reformat
-    if (v8StyleErrors && this.stack) {
-      this.stack = reformat(this.stack, name, message)
-    }
-
     this.message = message || ''
     this.name = name
+
+    this.reformatStack();
   }
 
   NewError.prototype = new (ParentError || Error)()
   NewError.prototype.constructor = NewError
   NewError.prototype.inspect = defaultInspect;
   NewError.prototype.name = name
+  NewError.prototype.reformatStack = reformatStack;
 
   return NewError
 }
