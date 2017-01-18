@@ -3,6 +3,12 @@
 var v8StyleErrors = require('./lib/v8-style')()
 var reformat = require('./lib/reformat')
 
+function defaultInspect() {
+  return this.message
+    ? '[' + this.name + ': ' + this.message + ']'
+    : '[' + this.name + ']'
+}
+
 function ErrorMaker(name, ParentError) {
   function NewError(message) {
     if (!(this instanceof NewError))
@@ -20,9 +26,9 @@ function ErrorMaker(name, ParentError) {
       this.stack = err.stack
     }
 
-    // if we have v8-styled stack messages, then reformat
-    if (v8StyleErrors) {
-      if (this.stack) this.stack = reformat(this.stack, name, message)
+    // if we have v8-styled stack messages and this.stack is defined, then reformat
+    if (v8StyleErrors && this.stack) {
+      this.stack = reformat(this.stack, name, message)
     }
 
     this.message = message || ''
@@ -31,11 +37,7 @@ function ErrorMaker(name, ParentError) {
 
   NewError.prototype = new (ParentError || Error)()
   NewError.prototype.constructor = NewError
-  NewError.prototype.inspect = function() {
-    return this.message
-      ? '[' + name + ': ' + this.message + ']'
-      : '[' + name + ']'
-  }
+  NewError.prototype.inspect = defaultInspect;
   NewError.prototype.name = name
 
   return NewError
