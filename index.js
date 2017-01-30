@@ -10,8 +10,8 @@ function defaultInspect() {
 }
 
 function defaultToJson() {
-  let res = {};
-  let err = this;
+  var res = {};
+  var err = this;
   Object.getOwnPropertyNames(err).forEach(function(key) {
     res[key] = err[key];
   });
