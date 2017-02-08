@@ -26,22 +26,24 @@ function reformatStack() {
   if (this.stack) {
     // when created from child error stack contains all the parents
     // perform some stack cleanup
-    this.stack = this.stack.replace(/^.+?NewError(((?!=NewError).+)[\r\n])/gm, '')
+    this.stack = this.stack.replace(/^.+?NewError(((?!=NewError).+)[\r\n])/gm, '').replace(new RegExp('.+?' + this.name + '.+?[\r\n]+'), '')
   }
 }
 
 function BaseErrorConstructor (message) {
-    // Use a try/catch block to capture the stack trace. Capturing the stack trace here is
-    // necessary, otherwise we will get the stack trace at the time the new error class was created,
-    // rather than when it is instantiated.  We add `message` and `name` so that the stack trace
-    // string will match our current error class.
+  // Use a try/catch block to capture the stack trace. Capturing the stack trace here is
+  // necessary, otherwise we will get the stack trace at the time the new error class was created,
+  // rather than when it is instantiated.  We add `message` and `name` so that the stack trace
+  // string will match our current error class.
+  if (Error.captureStackTrace) {
+      Error.captureStackTrace(this);
+  } else {
     try {
       throw new Error(message)
+    } catch (err) {
+      this.stack = err.stack;
     }
-    catch (err) {
-      err.name = this.name
-      this.stack = err.stack
-    }
+  }
     this.message = message || ''
 
     this.reformatStack();
